@@ -75,15 +75,15 @@ with tab1:
         if submit_button and flag==0:
             
             import pickle
-            with open(r"source/model.pkl", 'rb') as file:
+            with open(r"model.pkl", 'rb') as file:
                 loaded_model = pickle.load(file)
-            with open(r'source/scaler.pkl', 'rb') as f:
+            with open(r'scaler.pkl', 'rb') as f:
                 scaler_loaded = pickle.load(f)
 
-            with open(r"source/t.pkl", 'rb') as f:
+            with open(r"t.pkl", 'rb') as f:
                 t_loaded = pickle.load(f)
 
-            with open(r"source/s.pkl", 'rb') as f:
+            with open(r"s.pkl", 'rb') as f:
                 s_loaded = pickle.load(f)
 
             new_sample= np.array([[np.log(float(quantity_tons)),application,np.log(float(thickness)),float(width),country,float(customer),int(product_ref),item_type,status]])
@@ -130,15 +130,14 @@ with tab2:
              
         if csubmit_button and cflag==0:
             import pickle
-            with open(r"source/cmodel.pkl", 'rb') as file:
+            with open(r"cmodel.pkl", 'rb') as file:
                 cloaded_model = pickle.load(file)
 
-            with open(r'source/cscaler.pkl', 'rb') as f:
+            with open(r'cscaler.pkl', 'rb') as f:
                 cscaler_loaded = pickle.load(f)
 
-            with open(r"source/ct.pkl", 'rb') as f:
+            with open(r"ct.pkl", 'rb') as f:
                 ct_loaded = pickle.load(f)
-
             # Predict the status for a new sample
             # 'quantity tons_log', 'selling_price_log','application', 'thickness_log', 'width','country','customer','product_ref']].values, X_ohe
             new_sample= np.array([[np.log(float(cquantity_tons)), np.log(float(cselling)), capplication, np.log(float(cthickness)),float(cwidth),ccountry,int(ccustomer),int(product_ref),citem_type]])
@@ -149,9 +148,8 @@ with tab2:
 
             if new_pred.all()==1:
                 st.write('## :green[The Status is Won] ')
-            elif new_pred[0][7]==1:
-                st.write('## :green[The Status is Won] ')
-
+            # elif new_pred[0][7]==1:
+            #     st.write('## :green[The Status is Won] ')
             else:
                 st.write('## :red[The status is Lost] ')
                 st.write(new_pred)
