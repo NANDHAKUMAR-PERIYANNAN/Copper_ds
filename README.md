@@ -65,4 +65,4 @@ This project provides a comprehensive experience in data analysis, machine learn
 
 ---
 
-© 2024 Industrial Copper Modeling Project. All rights reserved.
+
